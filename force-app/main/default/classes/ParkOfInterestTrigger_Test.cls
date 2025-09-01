@@ -61,12 +61,15 @@ private class ParkOfInterestTrigger_Test {
         Park_Of_Interest__c poi = createPOIFromAccount(park, account);
         insert poi;
 
+        Park_Of_Interest__c updatedPOI = [SELECT Contact__c FROM Park_Of_Interest__c WHERE Id = :poi.Id LIMIT 1];
+        Assert.isNotNull(updatedPOI.Contact__c);
+
         Test.startTest();
         poi.Account__c = null;
         update poi;
         Test.stopTest();
 
-        Park_Of_Interest__c updatedPOI = [SELECT Contact__c FROM Park_Of_Interest__c WHERE Id = :poi.Id LIMIT 1];
+        updatedPOI = [SELECT Contact__c FROM Park_Of_Interest__c WHERE Id = :poi.Id LIMIT 1];
         Assert.isNull(updatedPOI.Contact__c);
     }
 

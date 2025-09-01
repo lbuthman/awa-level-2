@@ -1,12 +1,5 @@
 public without sharing class LeadTrigger_Helper {
 
-    //@test: should_reassign_accepted_lead_on_update
-    public static void reassignLead(List<Lead> leads) {
-        for (Lead lead : leads) {
-            lead.OwnerId = UserInfo.getUserId();
-        }
-    }
-
     //@test: should_set_status_to_Engaged
     //@test: should_set_status_to_Reprocessed_and_reassign_to_Marketing_User
     public static void processReprocessedLeads(Lead newLead) {

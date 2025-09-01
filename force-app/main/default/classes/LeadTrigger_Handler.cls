@@ -1,13 +1,8 @@
 public with sharing class LeadTrigger_Handler {
 
     public static void onBeforeUpdate(List<Lead> newLeads, Map<Id, Lead> oldLeadMap) {
-        List<Lead> acceptedLeads = new List<Lead>();
         for (Lead newLead : newLeads) {
             Lead oldLead = oldLeadMap.get(newLead.Id);
-
-            if (newLead.Accept_Lead__c == true) {
-                acceptedLeads.add(newLead);
-            }
 
             //@test: should_set_status_to_Disinterested
             if (newLead.Disinterested_Reason__c != null &&
@@ -21,10 +16,6 @@ public with sharing class LeadTrigger_Handler {
             ) {
                 LeadTrigger_Helper.processReprocessedLeads(newLead);
             }
-        }
-
-        if (!acceptedLeads.isEmpty()) {
-            LeadTrigger_Helper.reassignLead(acceptedLeads);
         }
     }
 

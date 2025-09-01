@@ -1,19 +1,5 @@
 public with sharing class LeadTrigger_Handler {
 
-    public static void onAfterInsert(List<Lead> newLeads) {
-        List<Lead> leadsForParkOfInterest = new List<Lead>();
-        for (Lead lead : newLeads) {
-
-            if (lead.Parks_Of_Interest__c != null) {
-                leadsForParkOfInterest.add(lead);
-            }
-        }
-
-        if (!leadsForParkOfInterest.isEmpty()) {
-            LeadTrigger_Helper.createParkOfInterestForNewLeads(leadsForParkOfInterest);
-        }
-    }
-
     public static void onBeforeUpdate(List<Lead> newLeads, Map<Id, Lead> oldLeadMap) {
         List<Lead> acceptedLeads = new List<Lead>();
         List<Lead> changedStatusLead = new List<Lead>();
@@ -53,27 +39,16 @@ public with sharing class LeadTrigger_Handler {
     }
 
     public static void onAfterUpdate(List<Lead> newLeads) {
-
         Set<Id> convertedLeadIds = new Set<Id>();
-        Set<Id> leadsForPark = new Set<Id>();
+
         for (Lead newLead : newLeads) {
             if (newLead.IsConverted) {
                 convertedLeadIds.add(newLead.Id);
-            }
-
-            if (newLead.Parks_Of_Interest__c != null &&
-                !newLead.IsConverted
-            ) {
-                leadsForPark.add(newLead.Id);
             }
         }
 
         if (!convertedLeadIds.isEmpty()) {
             LeadTrigger_Helper.remapDataForConvertedLeads(convertedLeadIds);
-        }
-
-        if (!leadsForPark.isEmpty()) {
-            LeadTrigger_Helper.createParkOfInterestForExistingLeads(leadsForPark);
         }
     }
 

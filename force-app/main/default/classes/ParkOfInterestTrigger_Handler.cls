@@ -19,6 +19,8 @@ public with sharing class ParkOfInterestTrigger_Handler {
         }
 
         if (!newPOIsNotCreatedFromSync.isEmpty()) {
+            //todo: this goes away in the new model, because we treat the Account and Contact as one, nontransferable.
+            //  Each contact has their own interest, own account, own autonomy.
             ParkOfInterestTrigger_Helper.syncPOIsForContactsInRelatedAccount(newPOIsNotCreatedFromSync);
         }
     }

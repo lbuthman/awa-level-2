@@ -4,13 +4,6 @@ public with sharing class LeadTrigger_Handler {
         for (Lead newLead : newLeads) {
             Lead oldLead = oldLeadMap.get(newLead.Id);
 
-            //@test: should_set_status_to_Disinterested
-            if (newLead.Disinterested_Reason__c != null &&
-                oldLead.Disinterested_Reason__c != newLead.Disinterested_Reason__c
-            ) {
-                newLead.Status = 'Disinterested';
-            }
-
             if (newLead.Reprocessed_Reason__c != null &&
                 oldLead.Reprocessed_Reason__c != newLead.Reprocessed_Reason__c
             ) {

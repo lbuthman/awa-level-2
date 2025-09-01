@@ -2,28 +2,6 @@ public with sharing class ParkOfInterestTrigger_Handler {
     public static Boolean avoidInsertRecursion = false;
     public static Boolean avoidDeleteRecursion = false;
 
-    public static void onBeforeInsert(List<Park_Of_Interest__c> newPOIs) {
-        Map<Id, Park_Of_Interest__c> poiByAccountId = new Map<Id, Park_Of_Interest__c>();
-        Map<Id, Park_Of_Interest__c> poiByContactId = new Map<Id, Park_Of_Interest__c>();
-        for (Park_Of_Interest__c newPOI : newPOIs) {
-            if (newPOI.Account__c != null && newPOI.Contact__c == null) {
-                poiByAccountId.put(newPOI.Account__c, newPOI);
-            }
-
-            if (newPOI.Account__c == null && newPOI.Contact__c != null) {
-                poiByContactId.put(newPOI.Contact__c, newPOI);
-            }
-        }
-
-        if (!poiByAccountId.isEmpty()) {
-            ParkOfInterestTrigger_Helper.setMissingContactOnPOIs(poiByAccountId);
-        }
-
-        if (!poiByContactId.isEmpty()) {
-            ParkOfInterestTrigger_Helper.addMissingAccountOnPOIs(poiByContactId);
-        }
-    }
-
     public static void onAfterInsert(Map<Id, Park_Of_Interest__c> newPOIMap) {
         if (avoidInsertRecursion) { return; }
 
@@ -42,27 +20,6 @@ public with sharing class ParkOfInterestTrigger_Handler {
 
         if (!newPOIsNotCreatedFromSync.isEmpty()) {
             ParkOfInterestTrigger_Helper.syncPOIsForContactsInRelatedAccount(newPOIsNotCreatedFromSync);
-        }
-    }
-
-    public static void onBeforeUpdate(List<Park_Of_Interest__c> newPOIs, Map<Id, Park_Of_Interest__c> oldPOIMap) {
-
-        Map<Id, Park_Of_Interest__c> poiByAccountId = new Map<Id, Park_Of_Interest__c>();
-        for (Park_Of_Interest__c newPOI : newPOIs) {
-            Park_Of_Interest__c oldPOI = oldPOIMap.get(newPOI.Id);
-
-            if (newPOI.Account__c != oldPOI.Account__c) {
-                if (newPOI.Account__c != null) {
-                    poiByAccountId.put(newPOI.Account__c, newPOI);
-                } else {
-                    //@test: should_null_Contact_on_POI_when_Account_changes_to_null
-                    newPOI.Contact__c = null;
-                }
-            }
-        }
-
-        if (!poiByAccountId.isEmpty()) {
-            ParkOfInterestTrigger_Helper.setMissingContactOnPOIs(poiByAccountId);
         }
     }
 

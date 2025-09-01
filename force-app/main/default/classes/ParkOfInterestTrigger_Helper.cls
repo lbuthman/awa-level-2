@@ -1,37 +1,5 @@
 public without sharing class ParkOfInterestTrigger_Helper {
 
-    //@test: should_update_Contact_on_POI_when_Missing_at_Creation
-    //@test: should_update_Contact_on_POI_when_Account_changes
-    public static void setMissingContactOnPOIs(Map<Id, Park_Of_Interest__c> poiByAccountId) {
-        Map<Id, Id> contactIdByAccountId = new Map<Id, Id>();
-        for (Contact contact : [
-                SELECT AccountId
-                FROM Contact
-                WHERE AccountId IN :poiByAccountId.keySet()
-                ORDER BY CreatedDate
-        ]) {
-            contactIdByAccountId.put(contact.AccountId, contact.Id);
-        }
-
-        if (!contactIdByAccountId.isEmpty()) {
-            for (Park_Of_Interest__c poi : poiByAccountId.values()) {
-                if (contactIdByAccountId.containsKey(poi.Account__c)) {
-                    poi.Contact__c = contactIdByAccountId.get(poi.Account__c);
-                }
-            }
-        }
-    }
-
-    //@test: should_update_Account_on_POI_when_Missing_at_Creation
-    public static void addMissingAccountOnPOIs(Map<Id, Park_Of_Interest__c> poiByContactId) {
-        for (Contact contact : [SELECT AccountId FROM Contact WHERE Id IN :poiByContactId.keySet()]) {
-            Park_Of_Interest__c poi = poiByContactId.get(contact.Id);
-            if (contact.Id == poi.Contact__c) {
-                poi.Account__c = contact.AccountId;
-            }
-        }
-    }
-
     //@test: should_sync_POI_for_Contacts_from_related_Account
     //@test: should_NOT_sync_POI_for_Contacts_from_related_Account_if_already_existing
     //@test: should_delete_duplicate_POI_from_Contact_on_Insert

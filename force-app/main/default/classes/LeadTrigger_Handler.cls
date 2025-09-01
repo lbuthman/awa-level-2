@@ -2,14 +2,8 @@ public with sharing class LeadTrigger_Handler {
 
     public static void onBeforeUpdate(List<Lead> newLeads, Map<Id, Lead> oldLeadMap) {
         List<Lead> acceptedLeads = new List<Lead>();
-        List<Lead> changedStatusLead = new List<Lead>();
-
         for (Lead newLead : newLeads) {
             Lead oldLead = oldLeadMap.get(newLead.Id);
-
-            if (oldLead.Status != newLead.Status) {
-                changedStatusLead.add(newLead);
-            }
 
             if (newLead.Accept_Lead__c == true) {
                 acceptedLeads.add(newLead);
@@ -27,10 +21,6 @@ public with sharing class LeadTrigger_Handler {
             ) {
                 LeadTrigger_Helper.processReprocessedLeads(newLead);
             }
-        }
-
-        if (!changedStatusLead.isEmpty()) {
-            LeadTrigger_Helper.captureStatusChangeDate(changedStatusLead);
         }
 
         if (!acceptedLeads.isEmpty()) {

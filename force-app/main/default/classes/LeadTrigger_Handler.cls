@@ -1,17 +1,5 @@
 public with sharing class LeadTrigger_Handler {
 
-    public static void onBeforeUpdate(List<Lead> newLeads, Map<Id, Lead> oldLeadMap) {
-        for (Lead newLead : newLeads) {
-            Lead oldLead = oldLeadMap.get(newLead.Id);
-
-            if (newLead.Reprocessed_Reason__c != null &&
-                oldLead.Reprocessed_Reason__c != newLead.Reprocessed_Reason__c
-            ) {
-                LeadTrigger_Helper.processReprocessedLeads(newLead);
-            }
-        }
-    }
-
     public static void onAfterUpdate(List<Lead> newLeads) {
         Set<Id> convertedLeadIds = new Set<Id>();
 

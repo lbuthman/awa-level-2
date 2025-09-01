@@ -90,6 +90,8 @@ private class LeadTrigger_Test {
         insert lead;
 
         Test.startTest();
+        //todo: the problem with this logic "climate" is Park related, which we have the POI record to manage.
+        //  This functionality should move to the POI.
         lead.Disinterested_Reason__c = 'Does not like the climate';
         update lead;
         Test.stopTest();

@@ -1,5 +1,6 @@
 public without sharing class ParkTourTrigger_Handler {
 
+    //todo: this is the perfect use case for converting Apex to a Flow
     public static void onBeforeInsert(List<Park_Tour__c> newParkTours) {
         List<Id> leadIds = new List<Id>();
         List<Id> contactIds = new List<Id>();

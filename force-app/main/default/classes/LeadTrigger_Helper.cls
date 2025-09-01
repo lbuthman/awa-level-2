@@ -1,13 +1,5 @@
 public without sharing class LeadTrigger_Helper {
 
-    //@test: reprocessed_lead_should_be_assigned_to_Marketing_User_on_Insert()
-    public static void assignLeadsToMarkingUser(List<Lead> leads) {
-        User fakeMarketingUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Fake_Marketing_User LIMIT 1];
-        for (Lead lead : leads) {
-            lead.OwnerId = fakeMarketingUser.Id;
-        }
-    }
-
     //@test: should_capture_status_change_date()
     public static void captureStatusChangeDate(List<Lead> leads) {
         Map<String, String> leadDatesByStatus = fetchLeadStatusDates();

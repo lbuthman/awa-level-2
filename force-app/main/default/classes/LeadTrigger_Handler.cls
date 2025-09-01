@@ -1,19 +1,5 @@
 public with sharing class LeadTrigger_Handler {
 
-    public static void onBeforeInsert(List<Lead> newLeads) {
-        List<Lead> reprocessedLeads = new List<Lead>();
-        for (Lead newLead : newLeads) {
-
-            if (newLead.Status == 'Reprocessed') {
-                reprocessedLeads.add(newLead);
-            }
-        }
-
-        if (!reprocessedLeads.isEmpty()) {
-            LeadTrigger_Helper.assignLeadsToMarkingUser(reprocessedLeads);
-        }
-    }
-
     public static void onAfterInsert(List<Lead> newLeads) {
         List<Lead> leadsForParkOfInterest = new List<Lead>();
         for (Lead lead : newLeads) {
@@ -31,7 +17,7 @@ public with sharing class LeadTrigger_Handler {
     public static void onBeforeUpdate(List<Lead> newLeads, Map<Id, Lead> oldLeadMap) {
         List<Lead> acceptedLeads = new List<Lead>();
         List<Lead> changedStatusLead = new List<Lead>();
-        List<Lead> reprocessedLeads = new List<Lead>();
+
         for (Lead newLead : newLeads) {
             Lead oldLead = oldLeadMap.get(newLead.Id);
 
@@ -41,10 +27,6 @@ public with sharing class LeadTrigger_Handler {
 
             if (newLead.Accept_Lead__c == true) {
                 acceptedLeads.add(newLead);
-            }
-
-            if (newLead.Status == 'Reprocessed') {
-                reprocessedLeads.add(newLead);
             }
 
             //@test: should_set_status_to_Disinterested
@@ -67,10 +49,6 @@ public with sharing class LeadTrigger_Handler {
 
         if (!acceptedLeads.isEmpty()) {
             LeadTrigger_Helper.reassignLead(acceptedLeads);
-        }
-
-        if (!reprocessedLeads.isEmpty()) {
-            LeadTrigger_Helper.assignLeadsToMarkingUser(reprocessedLeads);
         }
     }
 

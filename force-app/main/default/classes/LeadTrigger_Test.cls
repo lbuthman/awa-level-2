@@ -229,7 +229,7 @@ private class LeadTrigger_Test {
     }
 
     @IsTest
-    static void should_delete_related_POIs_on_lead_delete() {
+    static void should_delete_related_POIs_and_Park_Tours_on_lead_delete() {
         Adventure_Park__c park = createPark();
         insert park;
 
@@ -240,12 +240,18 @@ private class LeadTrigger_Test {
         List<Park_Of_Interest__c> parksOfInterest = [SELECT Id FROM Park_Of_Interest__c];
         Assert.areEqual(1, parksOfInterest.size());
 
+        Park_Tour__c tour = createParkTour(park, lead);
+        insert tour;
+
         Test.startTest();
         delete lead;
         Test.stopTest();
 
         parksOfInterest = [SELECT Id FROM Park_Of_Interest__c];
         Assert.areEqual(0, parksOfInterest.size());
+
+        List<Park_Tour__c> parkTours = [SELECT Id FROM Park_Tour__c];
+        Assert.areEqual(0, parkTours.size());
     }
 
     /** @return TEST DATA AND SETUP *****/

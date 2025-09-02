@@ -4,12 +4,14 @@ public with sharing class AssignReprocessedLeadsToMarketingUser implements Trigg
         List<Lead> reprocessedLeads = new List<Lead>();
         for (Lead newLead : newLeads) {
             if (newLead.Status == 'Reprocessed') {
+                Logger.info('AssignReprocessedLeadsToMarketingUser: found reprocessed Leads');
                 reprocessedLeads.add(newLead);
             }
         }
 
         if (!reprocessedLeads.isEmpty()) {
             assignLeadsToMarketingUser(reprocessedLeads);
+            Logger.info('AssignReprocessedLeadsToMarketingUser Completed: .assignLeadsToMarketingUser()');
         }
     }
 
@@ -23,6 +25,7 @@ public with sharing class AssignReprocessedLeadsToMarketingUser implements Trigg
     }
 
     public void beforeUpdate(List<Lead> newLeads, List<Lead> oldLeads) {
+        Logger.info('AssignReprocessedLeadsToMarketingUser: before update context');
         beforeInsert(newLeads);
     }
 }

@@ -1,18 +1,36 @@
-# Salesforce DX Project: Next Steps
+# Welcome to the Apex Wilderness Adventures!
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+> ## "I believe it is in our nature to explore,
+>
+> to reach out into the unknown. The only true failure would be not to explore at all. When we set out we are not blind
+> to the dangers, nor ignorant of the hardships; but we go because the call is stronger than the fear, because to stay
+> would be a greater loss than any we might suffer in going. To venture is to live; to withdraw is to die a little each
+> day."
+>
+> Ernest Shackleton, on the nature of exploration, 1914-1917
 
-## How Do You Plan to Deploy Your Changes?
+## To the Highest Peaks
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Going from Level 1 Apex to Level 2 Apex is much easier than the expedition from Level 0 to Level 1. This org represents
+a preliminary state of an org with an Enterprise Level trigger framework, specifically the Trigger Actions framework. 
+This can be considered an early state of a Level 2 org, ready for greater enhancements and upgrades.
 
-## Configure Your Salesforce DX Project
+## More Specifically
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+1. Traceability & Visibility -> Nebula Logger
+2. Test Data Creation -> "crunch" new founded domain knowledge into Apex test data creation and test scenario bundling
+3. Callout Syntactical Sugar -> tbd
+4. Batch & Scheduled Job Sugar -> Relax
 
-## Read All About It
+## Getting Started
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+1. Create a new Developer Org
+2. Install the package
+3. Disable State and Country/Territory Picklists in Setup
+4. Setup your development environment (Workshop)
+5. Begin upgrade expeditions
+
+## Install the Package
+
+[![Install Unlocked Package in a Sandbox](./images/btn-install-unlocked-package-sandbox.png)](https://test.salesforce.com/packaging/installPackage.apexp?p0=pending)
+

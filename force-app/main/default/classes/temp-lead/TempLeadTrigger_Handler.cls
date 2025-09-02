@@ -13,12 +13,11 @@ public with sharing class TempLeadTrigger_Handler {
             handleTempLeadMatchingContact(tempLeadsById, parkIdByParkName)
         );
 
-        //New Temp Leads were matched on Contact completely, so bypass further processing.
-        if (tempLeadsById.isEmpty()) { return; }
-
-        processedTempLeads.addAll(
-            handleTempLeadMatchingLead(tempLeadsById, parkIdByParkName)
-        );
+        if (!tempLeadsById.isEmpty()) {
+            processedTempLeads.addAll(
+                handleTempLeadMatchingLead(tempLeadsById, parkIdByParkName)
+            );
+        }
 
         if (!processedTempLeads.isEmpty()) {
             update processedTempLeads;

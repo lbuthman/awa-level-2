@@ -32,5 +32,5 @@ This can be considered an early state of a Level 2 org, ready for greater enhanc
 
 ## Install the Package
 
-[![Install Unlocked Package in a Sandbox](./images/btn-install-unlocked-package-sandbox.png)](https://test.salesforce.com/packaging/installPackage.apexp?p0=pending)
+[![Install Unlocked Package in a Sandbox](./images/btn-install-unlocked-package-sandbox.png)](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tgK0000005LztQAE)
 

@@ -5,14 +5,12 @@ public with sharing class CreateParkOpeningAppointments implements TriggerAction
         for (Adventure_Park__c newPark : newParks) {
 
             if (thisParkIsActive(newPark, null)) {
-                Logger.info('CreateParkOpeningAppointments: found active park (after insert)');
                 activeParks.add(newPark);
             }
         }
 
         if (!activeParks.isEmpty()) {
             createOpeningAppointments(activeParks);
-            Logger.info('CreateParkOpeningAppointments: completed .createOpeningAppointments()');
         }
     }
 
@@ -23,14 +21,12 @@ public with sharing class CreateParkOpeningAppointments implements TriggerAction
             Adventure_Park__c oldPark = oldParks[i];
 
             if (thisParkIsActive(newPark, oldPark)) {
-                Logger.info('CreateParkOpeningAppointments: found active park (after update)');
                 activeParks.add(newPark);
             }
         }
 
         if (!activeParks.isEmpty()) {
             createOpeningAppointments(activeParks);
-            Logger.info('CreateParkOpeningAppointments: completed .createOpeningAppointments()');
         }
     }
 

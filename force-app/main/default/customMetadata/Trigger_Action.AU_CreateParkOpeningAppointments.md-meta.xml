@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>Apex_Class_Name__c</field>
-        <value xsi:type="xsd:string">CreateParkOpeningAppointmentsAction</value>
+        <value xsi:type="xsd:string">CreateParkOpeningAppointments</value>
     </values>
     <values>
         <field>Before_Delete__c</field>

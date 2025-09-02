@@ -1,4 +1,4 @@
-public with sharing class NewParkBusinessDataSetupAction implements TriggerAction.BeforeInsert, TriggerAction.AfterInsert {
+public with sharing class NewParkBusinessDataSetup implements TriggerAction.BeforeInsert, TriggerAction.AfterInsert {
 
     public void beforeInsert(List<Adventure_Park__c> newParks) {
         List<Adventure_Park__c> parksWithoutPricebooks = new List<Adventure_Park__c>();

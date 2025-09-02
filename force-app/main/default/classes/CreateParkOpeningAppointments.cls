@@ -1,4 +1,4 @@
-public with sharing class CreateParkOpeningAppointmentsAction implements TriggerAction.AfterInsert, TriggerAction.AfterUpdate {
+public with sharing class CreateParkOpeningAppointments implements TriggerAction.AfterInsert, TriggerAction.AfterUpdate {
 
     public void afterInsert(List<Adventure_Park__c> newParks) {
         List<Adventure_Park__c> activeParks = new List<Adventure_Park__c>();

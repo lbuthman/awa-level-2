@@ -1,12 +1,19 @@
 {
   "packageDirectories": [
     {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "AWA Level 2 Basecamp",
+      "versionDescription": "The beginnings of a Level 2 Org with the Trigger Actions framework implemented."
     }
   ],
   "name": "org-farm",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "64.0"
+  "sourceApiVersion": "64.0",
+  "packageAliases": {
+    "AWA Level 2 Basecamp": "0HogK0000000OYbSAM"
+  }
 }

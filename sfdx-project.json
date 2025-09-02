@@ -4,6 +4,12 @@
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
       "path": "force-app",
+      "dependencies": [
+        {
+          "package": "Trigger Actions Framework@0.3.1.NEXT",
+          "subscriberPackageVersionId": "04tKY000000QQ0RYAW"
+        }
+      ],
       "default": true,
       "package": "AWA Level 2 Basecamp",
       "versionDescription": "The beginnings of a Level 2 Org with the Trigger Actions framework implemented."
@@ -14,6 +20,7 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "64.0",
   "packageAliases": {
-    "AWA Level 2 Basecamp": "0HogK0000000OYbSAM"
+    "AWA Level 2 Basecamp": "0HogK0000000OYbSAM",
+    "AWA Level 2 Basecamp@0.1.0-1": "04tgK0000005LztQAE"
   }
 }

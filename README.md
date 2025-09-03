@@ -25,7 +25,7 @@ This can be considered an early state of a Level 2 org, ready for greater enhanc
 ## Getting Started
 
 1. Create a new Developer Org
-2. [Install Trigger Action](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tKY000000QQ0RYAW)
+2. [Install Trigger Actions](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tKY000000QQ0RYAW)
 3. Install the package
 4. Disable State and Country/Territory Picklists in Setup
 5. Setup your development environment (Workshop)

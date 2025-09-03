@@ -26,12 +26,8 @@ This can be considered an early state of a Level 2 org, ready for greater enhanc
 
 1. Create a new Developer Org
 2. [Install Trigger Actions](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tKY000000QQ0RYAW)
-3. Install the package
+3. [Install the package](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tgK0000005LztQAE)
 4. Disable State and Country/Territory Picklists in Setup
 5. Setup your development environment (Workshop)
 6. Begin upgrade expeditions
-
-## Install the Package
-
-[![Install Unlocked Package in a Sandbox](./images/btn-install-unlocked-package-sandbox.png)](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tgK0000005LztQAE)
 
